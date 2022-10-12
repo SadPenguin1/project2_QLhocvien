@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Create score</h1>
+	<form th:action="@{/score/create}" method="post" >
+	
+	<div>
+		<label>StudentCode</label>
+		<select name ="student.id" >
+		<option th:each ="u: ${studentList}" th:value ="${u.id}" th:text ="${u.studentCode}">
+		</select>
+	</div>
+	
+	<div>
+		<label>Course</label>
+		<select name ="course.id" >
+		<option th:each ="u: ${courseList}" th:value ="${u.id}" th:text ="${u.name}">
+		</select>
+	</div>
+	<div>
+		<label>Score :</label>
+		<input  type ="text" name ="score"  placeholder ="Enter score ...."  />	
+	</div>
+
+	<button type="submit">Create</button>		
+	</form>
+	
+
+</body>
+</html>

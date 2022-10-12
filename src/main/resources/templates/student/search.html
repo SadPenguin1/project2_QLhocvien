@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		Student Table
+	<div>
+		<a th:href="@{/student/create}" method ="get"> Add New Student</a>
+	</div>
+	   <form th:action="@{/student/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="studentCode" placeholder="Enter studentCode ...">			   		
+			
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>
+		
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>StudentCode</th>
+				<th>User</th>
+				
+				
+			</tr>
+	  		<tr th:each="student : ${studentList}">
+				<td th:text="${student.id}"></td>			
+				<td th:text="${student.studentCode}"></td>
+				<td th:text="${student.user.name}"></td>
+							
+				<td>
+					<a th:href="@{'/student/edit?id=' +${student.id}}">Edit</a>
+					<a th:href="@{'/student/delete?id=' +${student.id}}">Delete</a>
+				</td>
+			</tr> 
+				
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot>
+		
+	</table>
+	
+</body>
+</html>

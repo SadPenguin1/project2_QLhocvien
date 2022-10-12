@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/student/edit}" method="post"  >
+
+	<div>
+		<label>id :</label>
+		<input type ="text" name ="id"  th:value ="${student.id}" placeholder ="Enter id ...."  >
+	</div> 
+	 <div>
+		<label>Name :</label>
+		<input type ="text" name ="studentCode" th:value ="${student.studentCode}" placeholder ="Enter name ....">
+	</div> 
+	<div>
+		<label>User</label>
+		<select name ="user.id" >
+		<option th:each ="u: ${userList}" th:value ="${u.id}" th:text ="${u.name}">
+		</select>
+	</div>
+
+	<button type="submit">Save</button>
+
+</body>
+</html>

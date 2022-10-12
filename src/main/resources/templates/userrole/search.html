@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search course</title>
+</head>
+
+<body>
+	<div th:replace="header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		UserRole Table
+	<div>
+		<a th:href="@{/userrole/create}" method ="get"> Add New Userrole</a>
+	</div>
+	   <form th:action="@{/userrole/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="role" placeholder="Enter role...">	
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>	
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>Role</th>
+				<th>User</th>
+				
+				 
+				
+			</tr>
+	  		<tr th:each="userrole : ${userroleList}">
+				<td th:text="${userrole.id}"></td>
+				<td th:text="${userrole.role}"></td>
+				<td th:text="${userrole.user.name}"></td>	
+					
+				
+				
+				<td>
+					<a th:href="@{'/userrole/edit?id=' +${userrole.id}}">Edit</a>
+					<a th:href="@{'/userrole/delete?id=' +${userrole.id}}">Delete</a>
+				</td>	
+			</tr>
+			
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot> 	
+	</table>
+	
+	</div>
+</body>
+</html>

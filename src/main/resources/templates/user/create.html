@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Create user</h1>
+	<form th:action="@{/user/create}" method="post" enctype="multipart/form-data">
+	
+	<div>
+		<label>Name :</label>
+		<input type ="text" name ="name" placeholder ="Enter name ....">
+	</div>
+	<div>
+		<label>Avatar :</label>
+		<input type ="file" name ="file" accept="avatar/*">
+	</div>
+	<div>
+		<label>Birthday :</label>
+		<input  type ="text" name ="birthday"  placeholder ="Enter birthday ...."  />	
+	</div>
+	<div>
+		<label>Username :</label>
+		<input  type ="text" name ="username"  placeholder ="Enter username ...."  />	
+	</div>
+	<div>
+		<label>Password :</label>
+		<input  type ="text" name ="password"  placeholder ="Enter password ...."  />	
+	</div>
+	
+	
+	<button type="submit">Create</button>		
+	</form>
+	
+
+</body>
+</html>

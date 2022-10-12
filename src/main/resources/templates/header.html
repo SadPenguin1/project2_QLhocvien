@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment ="header">
+	<img src="https://i.pinimg.com/236x/f9/76/ef/f976ef15e0ceaca341339d1388a4cfa9.jpg"></img>
+	
+	<h1>Quan ly khoa hoc</h1>
+		<ul>
+			<li><a th:href="@{/course/search}" >Course</a></li>
+			<li><a th:href="@{/user/search}" >User</a></li>
+			<li><a th:href="@{/userrole/search}" >UserRole</a></li>
+			<li><a th:href="@{/student/search}" >Student</a></li>
+			<li><a th:href="@{/score/search}" >Score</a></li>
+			
+		</ul>
+	</div>
+
+</body>
+</html>

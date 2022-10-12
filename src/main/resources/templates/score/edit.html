@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/score/edit}" method="post" th:object="${score}">
+
+
+	<div>
+		<label>id :</label>
+		<input type ="text" name ="id"  th:value ="${score.id}" placeholder ="Enter id ...."  >
+	</div> 
+	<div>
+		<label>StudentCode</label>
+		<select name ="student.id" >
+		<option th:each ="u: ${studentList}" th:value ="${u.id}" th:text ="${u.studentCode}">
+		</select>
+	</div>
+	<div>
+		<label>Course</label>
+		<select name ="course.id" >
+		<option th:each ="u: ${courseList}" th:value ="${u.id}" th:text ="${u.name}">
+		</select>
+	</div>
+	 <div>
+		<label>Score :</label>
+		<input th:field ="*{score}" />
+	</div>
+
+	
+	<button type="submit">Save</button>
+
+</body>
+</html>

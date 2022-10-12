@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		User Table
+	<div>
+		<a th:href="@{/user/create}" method ="get"> Add New user</a>
+	</div>
+	   <form th:action="@{/user/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="name" placeholder="Enter name...">			   		
+			<input type="text" name ="start" placeholder="Enter start ...">			
+	        <input type="text" name ="end" placeholder="Enter end ...">
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>
+		
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Avatar</th>
+				
+				
+				<th>Birthday</th>
+				<th>Username</th>
+				<th>Password</th>
+				
+			</tr>
+	  		<tr th:each="user : ${userList}">
+				<td th:text="${user.id}"></td>
+				<td th:text="${user.name}"></td>
+				
+				<td><img height="100" th:src ="@{'/user/download?filename=' +${user.avatar}}">
+				
+				
+				<td th:text="${user.birthday}"></td>
+				<td th:text="${user.username}"></td>
+				<td th:text="${user.password}"></td>
+							
+				<td>
+					<a th:href="@{'/userrole/create?id=' +${user.id}}">Add Role</a>
+					<a th:href="@{'/user/edit?id=' +${user.id}}">Edit</a>
+					<a th:href="@{'/user/delete?id=' +${user.id}}">Delete</a>
+				</td>
+			</tr> 
+				
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot>
+		
+	</table>
+	
+</body>
+</html>

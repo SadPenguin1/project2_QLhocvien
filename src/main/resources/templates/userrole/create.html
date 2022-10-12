@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Create userrole</h1>
+	<form th:action="@{/userrole/create}" method="post"  th:object="${userrole}" >	
+	<div>
+		<label>Name :</label>
+		<input type ="text" name ="role" placeholder ="Enter role ....">
+	</div>	
+	<div>
+		<label>User</label>
+		<select name ="user.id" >
+		<option th:each ="user: ${userList}" th:value ="${user.id}" th:text ="${user.name}">
+		</select>
+	</div>
+	<button type="submit">Create</button>			
+	</form>
+
+</body>
+</html>

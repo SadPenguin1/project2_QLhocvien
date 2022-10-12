@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search course</title>
+</head>
+
+<body>
+	<div th:replace="header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		Course Table
+	<div>
+		<a th:href="@{/course/create}" method ="get"> Add New Course</a>
+	</div>
+	   <form th:action="@{/course/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="name" placeholder="Enter name...">	
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>	
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				
+			</tr>
+	  		<tr th:each="course : ${courseList}">
+				<td th:text="${course.id}"></td>
+				<td th:text="${course.name}"></td>			
+				<td>
+					<a th:href="@{'/course/edit?id=' +${course.id}}">Edit</a>
+					<a th:href="@{'/course/delete?id=' +${course.id}}">Delete</a>
+				</td>	
+			</tr>
+			
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot> 	
+	</table>
+	
+	</div>
+</body>
+</html>
